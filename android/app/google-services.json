@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "889457893820",
+    "firebase_url": "https://clear-sky-f0fc5.firebaseio.com",
+    "project_id": "clear-sky-f0fc5",
+    "storage_bucket": "clear-sky-f0fc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889457893820:android:fae74c0daa78594ea54bb9",
+        "android_client_info": {
+          "package_name": "com.aniansh.clearsky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889457893820-5ct48k717f5rqjftsibecp21b4migq1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALcVxQnllcjTVNHw2WqHwvwqJFhmzA7SU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889457893820-5ct48k717f5rqjftsibecp21b4migq1m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,29 @@
+telescope icon//done
+container height issue //done
+background issue//done
+
+sunset sunrise//done
+check for internet//done
+persistence//done
+api key list
+fetch key from api heroku
+permissions handling//done
+
+icons//done
+about page
+tweaking
+animate tabs sliding
+precise sunset/rise
+
+more error handling
+
+more animations
+
+citations
+
+//graph and back overriding
+
+off center icon
+
+custom icons for different solar system objects
+planet overlap function not working!

@@ -1,0 +1,6 @@
+Font Awesome
+Ephemx
+Pyephem
+Wallpaper
+Weather API
+Telescope Icon
