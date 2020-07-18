@@ -16,15 +16,11 @@ class TabPage extends StatefulWidget {
   _TabPageState createState() => _TabPageState();
 }
 
-class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin
+class _TabPageState extends State<TabPage>
 {
 
-  AnimationController controller;
-  var opacityController;
-  var positionController;
+  PageController pageController;
   int _currentIndex=0;
-  List<double> animatedOpacity;
-  List<double> animatedPosition;
   int previndex=1;
 
   @override
@@ -32,43 +28,16 @@ class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin
   
     super.initState();
 
-    //init
+    pageController = PageController();
 
-    animatedOpacity=List(4);
-    animatedPosition=List(4);
+  }
 
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 300),
-      
-    );
-    controller.forward();
+  @override
+  void dispose() {
+    // TODO: implement dispose
 
-
-    this.opacityController = new Tween(
-      begin: 0.0,
-      end: 1.0,
-      ).animate(new CurvedAnimation(
-        parent: controller,
-        curve: Curves.ease
-        ));
-    
-    this.positionController = new Tween(
-      begin: 0.0,
-      end: 1.0,
-      ).animate(new CurvedAnimation(
-        parent: controller,
-        curve: Curves.ease
-        ));
-
-    for(int i=0;i<4;i++)
-    {
-      animatedOpacity[i]=0;
-      animatedPosition[i]=0;
-    }
-    // animatedOpacity[this._currentIndex]=1;
-    // controller.reverse();
-    // controller.
+    pageController.dispose();
+    super.dispose();
   }
 
 
@@ -120,26 +89,31 @@ class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin
             title: Text("Info")
           ),
           
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.settings),
-          //   title: Text("Settings")
-          // ),
-          
           
         ],
         onTap: (index)
         {
-          setState(() 
+          if(_currentIndex!=index)
           {
-            if(_currentIndex!=index)
+            setState(() 
             {
-            previndex=_currentIndex;
-            _currentIndex = index;
-            controller.reset();
-            controller.forward();
-            }
-          });
-        },
+              
+              
+              previndex=_currentIndex;
+              _currentIndex = index;
+              if (pageController.hasClients) 
+              {
+                pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.ease,
+                );
+              }
+                
+            
+            },);
+          }
+        }
       ),
       body: SafeArea(
         child: Ink(
@@ -151,57 +125,20 @@ class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin
               fit: BoxFit.cover,
             ),
           ),
-          child: AnimatedBuilder(
-            animation: this.controller,
-            builder: (context,_)
+          child: PageView(
+            controller: pageController,
+            onPageChanged: (index)
             {
-
-              for(int i=0;i<4;i++)
+              setState(() 
               {
-                if(this.animatedOpacity[i]!=0)
-                {
-                  this.animatedOpacity[i]=1-opacityController.value;
-                }
-                // this.animatedOpacity[i]=0;
-              }
-              if(_currentIndex-previndex>0)
-              {
-                this.animatedPosition[this.previndex]=-(positionController.value*MediaQuery.of(context).size.width);
-                this.animatedPosition[this._currentIndex]=((1-positionController.value)*MediaQuery.of(context).size.width);
-
-              }
-              else
-              {
-                this.animatedPosition[this.previndex]=(positionController.value*MediaQuery.of(context).size.width);
-                this.animatedPosition[this._currentIndex]=-((1-positionController.value)*MediaQuery.of(context).size.width);
-              }
-              
-              this.animatedOpacity[this._currentIndex]=opacityController.value;
-
-              return Stack(
-              children: <Widget>[
-                for(int i=0; i<tabs.length; i++)
-                  Positioned(
-                    left: this.animatedPosition[i],
-                    right: -this.animatedPosition[i],
-                    top:0,
-                    bottom: 0,
-                     child: Opacity(
-                      opacity: 1,
-                      child: Offstage(
-                        offstage: this.animatedOpacity[i]==0,
-                        child: TickerMode(
-                          enabled: this._currentIndex==i,
-                          child: tabs[i],
-                        ),
-                      ),
-                    ),
-                  )
-              ],
-            );
-          
+                previndex=_currentIndex;
+                _currentIndex = index;
+              });
             },
-            
+            children: <Widget>[
+              for(int i=0; i<tabs.length; i++)
+              tabs[i]
+            ],
           ),
         ),
       ),

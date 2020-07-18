@@ -55,8 +55,7 @@ class _HomeState extends State<Home>
   void getData()
   {
     Weather current = data['currentWeather'];
-    setState(()
-    {
+    
       
       // this.lat = testObject.latitude;
       // this.long = testObject.longitude;
@@ -85,9 +84,16 @@ class _HomeState extends State<Home>
         data: current.cloudCoverList,
       )
     ];
-      this.isLoaded=true;
-    }
-    );
+      // this.isLoaded=true;
+      Future.delayed(Duration(milliseconds: 500), ()
+    {
+      setState(() 
+      {
+        this.isLoaded=true;
+      });
+    });
+    
+    
   }
 
 
@@ -104,6 +110,7 @@ class _HomeState extends State<Home>
   Widget build(BuildContext context)
   {
     // this.isLoaded=false;
+    
 
     Phase moon = Phase();
     
@@ -117,27 +124,24 @@ class _HomeState extends State<Home>
             children: <Widget>[
               
               // Text('${this.lat}, ${this.long}\n${this.city}'),
-              WidgetLoader(
-                isLoaded: this.isLoaded,
-                child:Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: HomeCard(
-                        children: <Widget>[
-                          Text(
-                            "${this.city}",
-                            style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.grey[300],
-                                      fontWeight: FontWeight.bold 
-                                    ),
-                                  
-                            )
-                        ],
-                      ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: HomeCard(
+                      children: <Widget>[
+                        Text(
+                          "${this.city}",
+                          style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.grey[300],
+                                    fontWeight: FontWeight.bold 
+                                  ),
+                                
+                          )
+                      ],
                     ),
-                  ],
-                )
+                  ),
+                ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,122 +149,119 @@ class _HomeState extends State<Home>
                 children: <Widget>[
                   Expanded(
                     flex: 3,
-                    child: WidgetLoader(
-                      isLoaded: this.isLoaded,
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: HomeCard(
-                                  children: <Widget>[
-                                    Text(
-                                      "Tonight",
-                                      style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.grey[300],
-                                                fontWeight: FontWeight.bold 
-                                              ),
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                              child: HomeCard(
+                                children: <Widget>[
+                                  Text(
+                                    "Tonight",
+                                    style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.grey[300],
+                                              fontWeight: FontWeight.bold 
+                                            ),
 
-                                      )
-                                    ],
-                                  ),
+                                    )
+                                  ],
                                 ),
+                              ),
+                          ],
+                        ),
+                        Container(
+                          // height: 280,
+                          child: HomeCard(
+                            
+                            children: <Widget>[
+                              
+                              Image.asset(
+                                this.iconFile,
+                                height: 55,
+                                ),
+                              SizedBox(height: 10,),
+                              Text(
+                                "${this.weatherDescription}",//!Capitalise
+                                style: TextStyle(
+                                    color: Colors.grey[300],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 20,),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(""),
+                                  ),
+                                  Expanded(
+                                    flex: 2,
+                                    child: FaIcon(
+                                      FontAwesomeIcons.temperatureHigh,
+                                      color: Colors.grey[300],
+                                      
+                                      )
+                                    ),
+                                  Expanded(
+                                    flex: 10,
+                                    child:Text(
+                                      "${this.maxTemp} °C",
+                                      style: TextStyle(
+                                        color: Colors.grey[300],
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                          ),
+                                      textAlign: TextAlign.right,
+
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(""),
+                                  )
+                                ],
+                              ),
+                              SizedBox(height: 15,),
+                              Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(""),
+                                  ),
+                                  Expanded(
+                                    flex: 2,
+                                    child: FaIcon(
+                                      FontAwesomeIcons.temperatureLow,
+                                      color: Colors.grey[300],
+                                      
+                                      )
+                                    ),
+                                  Expanded(
+                                    flex: 10,
+                                    child:Text(
+                                      "${this.minTemp} °C",
+                                      style: TextStyle(
+                                        color: Colors.grey[300],
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                          ),
+                                      textAlign: TextAlign.right,
+
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Text(""),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
-                          Container(
-                            // height: 280,
-                            child: HomeCard(
-                              
-                              children: <Widget>[
-                                
-                                Image.asset(
-                                  this.iconFile,
-                                  height: 55,
-                                  ),
-                                SizedBox(height: 10,),
-                                Text(
-                                  "${this.weatherDescription}",//!Capitalise
-                                  style: TextStyle(
-                                      color: Colors.grey[300],
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(height: 20,),
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: Text(""),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: FaIcon(
-                                        FontAwesomeIcons.temperatureHigh,
-                                        color: Colors.grey[300],
-                                        
-                                        )
-                                      ),
-                                    Expanded(
-                                      flex: 10,
-                                      child:Text(
-                                        "${this.maxTemp} °C",
-                                        style: TextStyle(
-                                          color: Colors.grey[300],
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                            ),
-                                        textAlign: TextAlign.right,
-
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Text(""),
-                                    )
-                                  ],
-                                ),
-                                SizedBox(height: 15,),
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: Text(""),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: FaIcon(
-                                        FontAwesomeIcons.temperatureLow,
-                                        color: Colors.grey[300],
-                                        
-                                        )
-                                      ),
-                                    Expanded(
-                                      flex: 10,
-                                      child:Text(
-                                        "${this.minTemp} °C",
-                                        style: TextStyle(
-                                          color: Colors.grey[300],
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                            ),
-                                        textAlign: TextAlign.right,
-
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Text(""),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   //! Alignment center for moon column

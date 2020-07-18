@@ -115,6 +115,17 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
     this.planetList = data['planetList'];
   }
 
+
+  @override
+  void dispose() 
+  {
+    controller.dispose();
+    positionController.dispose();
+    heightController.dispose();
+    widthController.dispose();  
+    super.dispose();
+  }
+
   @override
   void initState() 
   {
@@ -288,7 +299,7 @@ class ExpandingList extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return Container(
+    return Ink(
       // duration: Duration(milliseconds: 500),
       // curve: Curves.easeOutCirc,
       height: this.height,
@@ -301,82 +312,91 @@ class ExpandingList extends StatelessWidget
         elevation: 10,
         // borderOnForeground: false,
         color: Colors.grey[900].withOpacity(1),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              FlatButton(
-                onPressed: this.titleTap,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                    child: Text(
-                    this.label,
-                    style: TextStyle(
-                      color: Colors.grey[300],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    ),
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20)
+        ),
+          onTap: this.titleTap,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 4),
+                  child: Text(
+                  this.label,
+                  style: TextStyle(
+                    color: Colors.grey[300],
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 30),
-              //   child: Divider(
-              //     height: 10,
-              //     color: Colors.grey[300],
-              //     thickness: 2,
-              //     ),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 30),
+                //   child: Divider(
+                //     height: 10,
+                //     color: Colors.grey[300],
+                //     thickness: 2,
+                //     ),
 
-              // ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: this.data.length,
-                  itemBuilder: (context, index)
-                  {
-                    String timeString="Always above Horizon.";
-                    if(this.data[index]['rise']!=null)
+                // ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: this.data.length,
+                    itemBuilder: (context, index)
                     {
-                      timeString="Rises ${DateFormat('jm').format(this.data[index]['rise'])}, ";
-                      timeString+="Sets ${DateFormat('jm').format(this.data[index]['set'])} ";
-                    }
-                    return Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
-                        ),
-                      elevation: 2,
-                      
-                      color: Colors.black.withAlpha(0),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: ListTile(
-                            leading: this.icon,
-                            onTap: titleTap,
-                            title: Text(
-                              this.data[index]['name'],
-                              style: TextStyle(
-                                color: Colors.grey[300],
-                                fontSize: 20,
-                              ),
-                              ),
-                            subtitle: Text(
-
-                              timeString,
-                              style: TextStyle(
-                                color: Colors.grey[500],
-                                fontSize: 12,
-                              ),
-                              ),
-                              
+                      String timeString="Always above Horizon.";
+                      if(this.data[index]['rise']!=null)
+                      {
+                        timeString="Rises ${DateFormat('jm').format(this.data[index]['rise'])}, ";
+                        timeString+="Sets ${DateFormat('jm').format(this.data[index]['set'])} ";
+                      }
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)
                           ),
-                      ),
-                      );
-                  },
-                  ),
-              )
+                        elevation: 2,
+                        
+                        color: Colors.black.withAlpha(0),
+                        child: InkWell(
+                          customBorder: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)
+                              ),
+                          onTap: this.titleTap,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                            child: ListTile(
+                                leading: this.icon,
+                                // onTap: titleTap,
+                                title: Text(
+                                  this.data[index]['name'],
+                                  style: TextStyle(
+                                    color: Colors.grey[300],
+                                    fontSize: 20,
+                                  ),
+                                  ),
+                                subtitle: Text(
 
-            ],
+                                  timeString,
+                                  style: TextStyle(
+                                    color: Colors.grey[500],
+                                    fontSize: 12,
+                                  ),
+                                  ),
+                                  
+                              ),
+                          ),
+                        ),
+                        );
+                    },
+                    ),
+                )
+
+              ],
+            ),
           ),
         ),
       )
