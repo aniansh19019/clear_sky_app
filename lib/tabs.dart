@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gyroscope_widget/gyroscope_widget.dart';
 import 'package:phases/pages/moon.dart';
 import 'package:phases/pages/home.dart';
 
@@ -120,30 +121,37 @@ class _TabPageState extends State<TabPage>
         }
       ),
       body: SafeArea(
-        child: Ink(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/bg6.jpg"),
-              fit: BoxFit.cover,
+        child: Stack(
+          children: <Widget>[
+            GyroscopeWidget(
+              scaleMargin: 0.07,
+              child: Image.asset(
+                "assets/bg6.jpg",
+                height: double.infinity,
+                width: double.infinity,
+                fit: BoxFit.fill,
+              )
             ),
-          ),
-          child: PageView(
-            controller: pageController,
-            onPageChanged: (index)
-            {
-              setState(() 
-              {
-                previndex=_currentIndex;
-                _currentIndex = index;
-              });
-            },
-            children: <Widget>[
-              for(int i=0; i<tabs.length; i++)
-              tabs[i]
-            ],
-          ),
+            Ink(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: PageView(
+                controller: pageController,
+                onPageChanged: (index)
+                {
+                  setState(() 
+                  {
+                    previndex=_currentIndex;
+                    _currentIndex = index;
+                  });
+                },
+                children: <Widget>[
+                  for(int i=0; i<tabs.length; i++)
+                  tabs[i]
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
