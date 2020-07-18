@@ -120,9 +120,9 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
   void dispose() 
   {
     controller.dispose();
-    positionController.dispose();
-    heightController.dispose();
-    widthController.dispose();  
+    // positionController.dispose();
+    // heightController.dispose();
+    // widthController.dispose();  
     super.dispose();
   }
 

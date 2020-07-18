@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:gyroscope_widget/gyroscope_widget.dart';
 import 'package:phases/pages/moon.dart';
@@ -126,12 +128,12 @@ class _TabPageState extends State<TabPage>
             GyroscopeWidget(
               scaleMargin: 0.07,
               child: Image.asset(
-                "assets/bg6.jpg",
+                "assets/bg033.jpg",
                 height: double.infinity,
                 width: double.infinity,
                 fit: BoxFit.fill,
               )
-            ),
+            ),     
             Ink(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
