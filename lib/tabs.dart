@@ -142,7 +142,7 @@ class _TabPageState extends State<TabPage> with SingleTickerProviderStateMixin
         },
       ),
       body: SafeArea(
-        child: Container(
+        child: Ink(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
