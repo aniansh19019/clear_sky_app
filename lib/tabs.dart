@@ -11,6 +11,10 @@ import 'package:phases/pages/highlights.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:phases/cusom_icon/custom_icon_pack_icons.dart';
 
+
+// import 'package:gyroscope_widget/gyroscope_widget.dart';
+
+
 class TabPage extends StatefulWidget {
   @override
   _TabPageState createState() => _TabPageState();
@@ -34,7 +38,7 @@ class _TabPageState extends State<TabPage>
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
 
     pageController.dispose();
     super.dispose();
@@ -43,7 +47,7 @@ class _TabPageState extends State<TabPage>
 
   // Persistence problem
   //fixed
-  //! Rapid switching problem
+  //! Rapid switching problem // temporary workaround // replace graphing library eventually
   @override
   Widget build(BuildContext context) 
   {
@@ -142,7 +146,6 @@ class _TabPageState extends State<TabPage>
           ),
         ),
       ),
-      
     );
   }
 }
