@@ -18,3 +18,4 @@ off center icon
 
 custom icons for different solar system objects
 planet overlap function not working!
+concurrent fetch

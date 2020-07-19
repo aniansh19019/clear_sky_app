@@ -37,7 +37,7 @@ class ApiKey
 
     try //* try fetching data from api
     {
-      print('${this.baseURL}?key=${this.passPhrase}');
+      // print('${this.baseURL}?key=${this.passPhrase}');
       response = await get('${this.baseURL}?key=${this.passPhrase}');
       jsonString = response.body;
       saveJsonToStore(jsonString);
