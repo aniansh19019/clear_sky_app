@@ -20,8 +20,7 @@ def get_data():
     data = data.read()
 
     data_dict = json.loads(data)
-    for i in range(len(data_dict['data'])):
-        print(data_dict['data'][i]['clouds'])
+    print(data_dict)
 
 
 get_data()

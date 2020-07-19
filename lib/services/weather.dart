@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:phases/services/planets.dart';
+import 'package:phases/services/get_api_key.dart';
 // import 'package:intl/intl.dart';
 // import 'dart:io';
 // flutter: Error getting Weather data! : type 'int' is not a subtype of type 'double'
@@ -112,6 +113,19 @@ class Weather
 
     this.sunRise = planets.sunData['rise'];
     this.sunSet = planets.sunData['set'];
+
+
+
+    print("fetching api key");
+    ApiKey keyFromNetwork=ApiKey();
+    bool gotKey = await keyFromNetwork.getData();
+
+    if(gotKey)
+    {
+      this.apiKey=keyFromNetwork.apiKey;
+      print(keyFromNetwork.apiKey);
+    }
+
 
 
 
