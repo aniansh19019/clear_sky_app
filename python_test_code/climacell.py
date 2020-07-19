@@ -23,7 +23,11 @@ def get_data():
     data = data.read()
 
     data_dict = json.loads(data)
+<<<<<<< HEAD
     print(data_dict[0])
+=======
+    print(data_dict)
+>>>>>>> api_key_from_heroku
 
 
 get_data()
