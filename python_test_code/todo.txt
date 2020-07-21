@@ -1,6 +1,6 @@
 
 api key list
-fetch key from api heroku
+//fetch key from api heroku
 
 
 about page
@@ -13,9 +13,21 @@ more animations
 
 citations
 
-
+milliseconds since epoch error graph!!!!!
 off center icon
 
 custom icons for different solar system objects
 planet overlap function not working!
 concurrent fetch
+Moon phase incorrect
+
+Graph not displaying
+
+Responsive layout, cards bunching up on top
+
+throw error on crashylytics 
+
+DateTime
+Location Picker
+
+Change Graph Type

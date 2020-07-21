@@ -253,6 +253,7 @@ class Weather
 
       current = DateTime.parse(this.dataDict['data'][i]['timestamp_local']);
       // print(tempEnd);
+      // if(current!=null)
       if(current.isAfter(start) && current.isBefore(end))
       {
         

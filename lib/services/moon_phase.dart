@@ -60,7 +60,7 @@ class Phase
     this.phaseDay=r.round();
     if(r<=15)
     {
-      this.illumination = (((15-r)/15)*100).round();
+      this.illumination = ((r/15)*100).round();
     }
     else
     {
