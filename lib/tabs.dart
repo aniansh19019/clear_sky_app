@@ -52,8 +52,7 @@ class _TabPageState extends State<TabPage>
   //fixed
   //! Rapid switching problem // temporary workaround // replace graphing library eventually
   @override
-  Widget build(BuildContext context) 
-  {
+  Widget build(BuildContext context) {
     Map<String, dynamic> data = {};
 
     final arguments = ModalRoute.of(context)?.settings.arguments;
