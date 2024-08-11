@@ -242,7 +242,7 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
             return  Padding(
               padding: const EdgeInsets.all(30),
               child: Stack(
-                overflow: Overflow.visible,
+                // overflow: Overflow.visible,
                 alignment: Alignment.center,
               children: <Widget>[
                 for(int i=0; i<3; i++)

@@ -140,8 +140,8 @@ class _LoadingState extends State<Loading>
             ],
           ),
         ),
-        actions: <Widget>[
-          FlatButton(
+        actions: [
+          ElevatedButton(
             child: Text('Okay'),
             onPressed: () {
               Navigator.of(context).pop();
