@@ -26,9 +26,9 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage>
 {
 
-  PageController pageController;
-  int _currentIndex=0;
-  int previndex=1;
+  late PageController pageController;
+  int _currentIndex = 0;
+  int previndex = 1;
 
   @override
   void initState() {
@@ -54,9 +54,12 @@ class _TabPageState extends State<TabPage>
   @override
   Widget build(BuildContext context) 
   {
-    Map data={};
+    Map<String, dynamic> data = {};
 
-    data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
+    final arguments = ModalRoute.of(context)?.settings.arguments;
+    if (arguments != null && arguments is Map<String, dynamic>) {
+      data = arguments;
+    }
     
 
     final tabs = [
