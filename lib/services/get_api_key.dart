@@ -4,7 +4,7 @@ import 'package:http/http.dart';
 class ApiKey 
 {
 
-  String apiKey;
+  late String apiKey;
   String baseURL="http://aniansh-planets-api.herokuapp.com/api_key";
   final String passPhrase='papajones-mamamia';
   Future<String> getJsonFromStore()async

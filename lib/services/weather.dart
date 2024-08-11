@@ -13,29 +13,28 @@ import 'package:phases/services/get_api_key.dart';
 //! fix sunrise sunset
 class Weather
 {
-  double lat;
-  double long;
-  String apiKey="16c3252852304f0bb7bddec8e0bb8fad";
-  String baseURL="https://api.weatherbit.io/v2.0/forecast/hourly";
-  String practiceData='''''';
-  String cityName="Error getting data";
-  Map dataDict;
+  late double lat;
+  late double long;
+  String apiKey = "16c3252852304f0bb7bddec8e0bb8fad";
+  String baseURL = "https://api.weatherbit.io/v2.0/forecast/hourly";
+  String practiceData = '''''';
+  String cityName = "Error getting data";
+  late Map<String, dynamic> dataDict;
   final bool testing=false;
-  List <CloudCoverSeries> cloudCoverList;
-  List <DataSeries> dataList;
-  bool isNight;
-  double avgVisibility;
-  double maxTemp;
-  double minTemp;
-  DateTime sunRise;
-  DateTime sunSet;
+  late List<CloudCoverSeries> cloudCoverList;
+  late List<DataSeries> dataList;
+  late bool isNight;
+  late double avgVisibility;
+  late double maxTemp;
+  late double minTemp;
+  late DateTime sunRise;
+  late DateTime sunSet;
   // String responseJsonString;
 
 
-  Weather()
-  {
-    this.cloudCoverList = List();
-    this.dataList = List();
+  Weather() {
+    this.cloudCoverList = [];
+    this.dataList = [];
     this.maxTemp=-100;
     this.minTemp=100;
   }

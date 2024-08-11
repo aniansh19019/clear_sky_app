@@ -3,14 +3,14 @@ import 'package:intl/intl.dart';
 class Phase
 {
 
-  String prevFullMoon;
-  String prevNewMoon;
-  String nextFullMoon;
-  String nextNewMoon;
-  String riseTime;
-  String setTime;
-  int phaseDay;
-  int illumination; // ! Not linearly dependent!
+  late String prevFullMoon;
+  late String prevNewMoon;
+  late String nextFullMoon;
+  late String nextNewMoon;
+  late String riseTime;
+  late String setTime;
+  late int phaseDay;
+  late int illumination; // ! Not linearly dependent!
   List<String> phases =[
     "New Moon",
     "Young Moon",

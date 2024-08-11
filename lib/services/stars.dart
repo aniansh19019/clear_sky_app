@@ -4,15 +4,13 @@ import 'package:csv/csv.dart';
 class Stars
 {
   
-  List<Map> formattedData;
+  late List<Map<String, dynamic>> formattedData;
   Future<void> getData()async
   {
 
     //* init
-    this.formattedData=List();
-    List<Map> starData;
-
-    starData =List();
+    this.formattedData = [];
+    List<Map<String, dynamic>> starData = [];
 
 
     //* reading from file

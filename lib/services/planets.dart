@@ -13,13 +13,13 @@ import 'package:intl/intl.dart';
 class Planets 
 {
 
-  List<Map> formattedData;
-  Map sunData;
-  double lat;
-  double long;
+  late List<Map<String, dynamic>> formattedData;
+  late Map<String, dynamic> sunData;
+  double? lat;
+  double? long;
   String baseURL="http://aniansh-planets-api.herokuapp.com/bodies";
   // String baseURL="http://127.0.0.1:5000/bodies";
-  Planets({this.lat, this.long});
+  Planets({required this.lat, required this.long});
 
 
 
@@ -73,8 +73,8 @@ class Planets
   Future<bool> getData()async
   {
     //*init
-    List data = List();
-    this.formattedData = List();
+    List<Map<String, dynamic>> data = [];
+    this.formattedData = [];
     String jsonString;
 
     jsonString = await fetchData();

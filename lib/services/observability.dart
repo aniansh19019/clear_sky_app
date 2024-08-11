@@ -8,14 +8,14 @@ import 'package:phases/util/ra_dec_to_alt_az.dart';
 
 class Observability
 {
-  double lat;
-  double long;
-  List starList;
-  List ngcList;
-  List planetList;
-  Map moonData;
-  DateTime sunSet;
-  DateTime sunRise;
+  late double lat;
+  late double long;
+  late List<Map<String, dynamic>> starList;
+  late List<Map<String, dynamic>> ngcList;
+  late List<Map<String, dynamic>> planetList;
+  late Map<String, dynamic> moonData;
+  late DateTime sunSet;
+  late DateTime sunRise;
   final int starCount=20;
   final int ngcCount=15;
   final double horizonOffset=0.5;//offset for rise and set filtering in hours
@@ -24,9 +24,9 @@ class Observability
   Future<bool> getData()async
   {
     // * init
-    this.starList=List();
-    this.ngcList=List();
-    this.planetList=List();
+    this.starList = [];
+    this.ngcList = [];
+    this.planetList = [];
 
     // Planets()
 

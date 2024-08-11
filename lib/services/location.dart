@@ -3,9 +3,9 @@ import 'package:location/location.dart';
 
 class LocationCustom
 {
-  double latitude;
-  double longitude;
-  double altitude;
+  late double latitude;
+  late double longitude;
+  late double altitude;
 
   Future<bool> getLocation() async
   {
