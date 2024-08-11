@@ -112,46 +112,42 @@ class _LoadingState extends State<Loading>
 
   }
 
-  Future<void> errorAlert(String title, String subtitle) async 
-  {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) 
-    {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20)
-        ) ,
-        backgroundColor: Colors.grey[900],
-        title: Text(
-          title,
-          style: TextStyle(color: Colors.grey[300]),
+  Future<void> errorAlert(String title, String subtitle) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              Text(
-                subtitle,
-                style: TextStyle(color: Colors.grey[300]),
-                
+          backgroundColor: Colors.grey[900],
+          title: Text(
+            title,
+            style: TextStyle(color: Colors.grey[300]),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  subtitle,
+                  style: TextStyle(color: Colors.grey[300]),
                 ),
-              // Text('Would you like to approve of this message?'),
-            ],
+              ],
+            ),
           ),
-        ),
-        actions: [
-          ElevatedButton(
-            child: Text('Okay'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
+          actions: [
+            ElevatedButton(
+              child: Text('Okay'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
   @override

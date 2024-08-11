@@ -104,10 +104,10 @@ class _MoonState extends State<Moon> {
 class Descriptor extends StatelessWidget 
 {
   const Descriptor({
-    Key key,
-    @required this.value,
-    @required this.label,
-  });
+    Key? key,
+    required this.value,
+    required this.label,
+  }) : super(key: key);
 
   final String value;
   final String label;

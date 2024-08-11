@@ -15,19 +15,19 @@ class Highlights extends StatefulWidget
 
 class _HighlightsState extends State<Highlights> with SingleTickerProviderStateMixin
 {
-  AnimationController controller;
-  var positionController;
-  var heightController;
-  var widthController;
+  late AnimationController controller;
+  late Animation<double> positionController;
+  late Animation<double> heightController;
+  late Animation<double> widthController;
 
 
   final Map data;
 
   bool active=false;
 
-  List<Map> starList;
-  List<Map> ngcList;
-  List<Map> planetList;
+  late List<Map<String, dynamic>> starList;
+  late List<Map<String, dynamic>> ngcList;
+  late List<Map<String, dynamic>> planetList;
 
 
   void switchController()
@@ -69,9 +69,9 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
   // Future<bool> _onWill
   
 
-  List<Function> toggles;
+  late List<Function> toggles;
 
-  List<List<Map>> dataLists;
+  late List<List<Map<String, dynamic>>> dataLists;
 
 
 
@@ -96,12 +96,12 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
   int listSelect=0;
   final List<double> initialPosition=[0.0,185.0,370.0];
   
-  List<Widget> icons;
+  late List<Widget> icons;
 
-  List<double> animatedHeight;
-  List<double> animatedWidth;
-  List<double> animatedPosition;
-  List<double> animatedOpacity;
+  late List<double> animatedHeight;
+  late List<double> animatedWidth;
+  late List<double> animatedPosition;
+  late List<double> animatedOpacity;
 
   // Map<>
   // bool planetToggle=false;
@@ -165,10 +165,10 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
         curve: Curves.easeInToLinear
         ));
 
-    this.animatedPosition = List(3);
-    this.animatedHeight = List(3);
-    this.animatedWidth = List(3);
-    this.animatedOpacity=List(3);
+    this.animatedPosition = List.filled(3, 0.0);
+    this.animatedHeight = List.filled(3, 0.0);
+    this.animatedWidth = List.filled(3, 0.0);
+    this.animatedOpacity = List.filled(3, 0.0);
     // this.initialPosition=List(3);
 
     for(int i=0; i<3; i++)

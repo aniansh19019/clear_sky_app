@@ -32,7 +32,7 @@ class Home extends StatefulWidget
 
 class _HomeState extends State<Home> 
 {
-  Map data;
+  Map<String, dynamic> data;
 
 
   // double lat=0;
@@ -40,7 +40,7 @@ class _HomeState extends State<Home>
   String iconFile="";
   String city="";
   bool isLoaded=false;
-  List<charts.Series<CloudCoverSeries, DateTime>> seriesList;
+  late List<charts.Series<CloudCoverSeries, DateTime>> seriesList;
   String weatherDescription="Loading";
   String weatherTime="Tonight";
   double minTemp=100;
