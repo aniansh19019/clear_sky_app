@@ -80,20 +80,20 @@ class _TabPageState extends State<TabPage>
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text("Home")
+            label: "Home"
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.moon),
-            title: Text("Moon")
+            label: "Moon"
           ),
           BottomNavigationBarItem(
             // icon: FaIcon(FontAwesomeIcons.binoculars),
             icon: Icon(CustomIconPack.telescope),
-            title: Text("Highlights")
+            label: "Highlights"
           ),
           BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.info),
-            title: Text("Info")
+            label: "Info"
           ),
           
           
