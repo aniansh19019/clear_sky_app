@@ -6,11 +6,11 @@ import 'package:phases/cusom_icon/custom_icon_pack_icons.dart';
 
 class Highlights extends StatefulWidget 
 {
-  final Map data;
-  Highlights(this.data);
+  late final Map<String, dynamic> data;
+  const Highlights(this.data, {Key? key}) : super(key: key);
 
   @override
-  _HighlightsState createState() => _HighlightsState(this.data);
+  _HighlightsState createState() => _HighlightsState();
 }
 
 class _HighlightsState extends State<Highlights> with SingleTickerProviderStateMixin
@@ -106,13 +106,12 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
   // Map<>
   // bool planetToggle=false;
 
-  _HighlightsState(this.data);
+  _HighlightsState();
 
-  void getData()
-  {
-    this.starList = data['starList'];
-    this.ngcList = data['ngcList'];
-    this.planetList = data['planetList'];
+  void getData() {
+    starList = List<Map<String, dynamic>>.from(data['starList'] ?? []);
+    ngcList = List<Map<String, dynamic>>.from(data['ngcList'] ?? []);
+    planetList = List<Map<String, dynamic>>.from(data['planetList'] ?? []);
   }
 
 
@@ -279,7 +278,7 @@ class _HighlightsState extends State<Highlights> with SingleTickerProviderStateM
 // TODO change list order
 class ExpandingList extends StatelessWidget 
 {
-  final List<Map> data;
+  final List<Map<String, dynamic>> data;
   final String label;
   final Widget icon;
   final double height;
@@ -288,12 +287,12 @@ class ExpandingList extends StatelessWidget
   
 
   ExpandingList({
-    this.data, 
-    this.label, 
-    this.icon, 
-    this.height=300, 
-    this.width=300,
-    this.titleTap,
+    required this.data,
+    required this.label,
+    required this.icon,
+    this.height = 300,
+    this.width = 300,
+    required this.titleTap,
 
     });
   @override
@@ -345,14 +344,13 @@ class ExpandingList extends StatelessWidget
                 // ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: this.data.length,
+                    itemCount: data.length,
                     itemBuilder: (context, index)
                     {
                       String timeString="Always above Horizon.";
-                      if(this.data[index]['rise']!=null)
-                      {
-                        timeString="Rises ${DateFormat('jm').format(this.data[index]['rise'])}, ";
-                        timeString+="Sets ${DateFormat('jm').format(this.data[index]['set'])} ";
+                      if (data[index]['rise'] != null) {
+                        timeString = "Rises ${DateFormat('jm').format(data[index]['rise'])}, ";
+                        timeString += "Sets ${DateFormat('jm').format(data[index]['set'])} ";
                       }
                       return Card(
                         shape: RoundedRectangleBorder(
@@ -372,7 +370,7 @@ class ExpandingList extends StatelessWidget
                                 leading: this.icon,
                                 // onTap: titleTap,
                                 title: Text(
-                                  this.data[index]['name'],
+                                  data[index]['name'],
                                   style: TextStyle(
                                     color: Colors.grey[300],
                                     fontSize: 20,
