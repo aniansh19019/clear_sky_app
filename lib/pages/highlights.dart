@@ -6,7 +6,7 @@ import 'package:phases/cusom_icon/custom_icon_pack_icons.dart';
 
 class Highlights extends StatefulWidget 
 {
-  late final Map<String, dynamic> data;
+  final Map<String, dynamic> data;
   const Highlights(this.data, {Key? key}) : super(key: key);
 
   @override
